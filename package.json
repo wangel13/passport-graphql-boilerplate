@@ -19,6 +19,7 @@
     "express-graphql": "^0.5.4",
     "express-session": "^1.14.1",
     "graphql": "^0.7.0",
+    "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "pg-promise": "^5.3.3"
   },
