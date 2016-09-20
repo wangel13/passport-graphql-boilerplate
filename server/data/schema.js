@@ -16,6 +16,10 @@ var userType = new GraphQLObjectType({
       type: new GraphQLNonNull(GraphQLString),
       description: 'The id of the user.',
     },
+    _id: {
+      type: new GraphQLNonNull(GraphQLString),
+      description: 'The uuid of the user.',
+    },
     name: {
       type: GraphQLString,
       description: 'The name of the user.',
@@ -37,8 +41,16 @@ let schema = new GraphQLSchema({
     fields: {
       user: {
         type: userType,
-        resolve: function() {
-          return 'user';
+        args: {
+          login: {
+            name: 'login',
+            type: GraphQLString
+          }
+        },
+        resolve: function(obj, { login }, source) {
+          return User.getUserByLogin(login).then((data) => {
+            return data;
+          })
         }
       }
     }

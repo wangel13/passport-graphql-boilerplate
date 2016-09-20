@@ -5,6 +5,7 @@ let pgp = require('pg-promise')({});
 
 let db = pgp(process.env.DATABASE_URL);
 
+
 const User = {
   createUser: createUser,
   checkPassword: checkPassword,
